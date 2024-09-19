@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Greeting Cards</title>
+    <style>
+      /* Basic styling for the card component */
+      .card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        font-family: Arial, sans-serif;
+      }
+
+      .greeting {
+        font-size: 20px;
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .name {
+        font-size: 18px;
+        color: #555;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script type="text/babel">
+      // GreetingCard component that accepts 'greeting' and 'name' props
+      function GreetingCard({ greeting, name }) {
+        return (
+          <div className="card">
+            <div className="greeting">{greeting}</div>
+            <div className="name">From: {name}</div>
+          </div>
+        );
+      }
+
+      // App component
+      function App() {
+        // Array of greeting card objects
+        const greetingCards = [
+          { greeting: 'Happy Birthday', name: 'John Doe' },
+          { greeting: 'Merry Christmas', name: 'Jane Smith' },
+          { greeting: 'Happy New Year', name: 'Bob Johnson' },
+          { greeting: 'Congratulations', name: 'Alice Brown' },
+        ];
+
+        return (
+          <div>
+            {/* Render a list of GreetingCard components */}
+            {greetingCards.map((card, index) => (
+              <GreetingCard
+                key={index}
+                greeting={card.greeting}
+                name={card.name}
+              />
+            ))}
+          </div>
+        );
+      }
+
+      // Render the App component to the root div
+      ReactDOM.render(<App />, document.getElementById('root'));
+    </script>
+  </body>
+</html>
